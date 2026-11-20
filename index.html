@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¡Feliz cumpleaños, Hary!</title>
+<style>
+:root{--lav:#C8A2E8;--lil:#E6D5F5;--ros:#F5CFE5;--dark:#261B3A;--perl:#FFF9FF;--gold:#E9CF91;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:var(--perl);font-family:Georgia,'Times New Roman',serif;line-height:1.6;overflow-x:hidden}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--lav),var(--ros),var(--gold));z-index:50}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.st{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s infinite ease-in-out}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+.pt{position:absolute;top:-20px;font-size:16px;opacity:.7;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(40px,110vh) rotate(360deg)}}
+.ff{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px 3px var(--gold);animation:fl ease-in-out infinite alternate}
+@keyframes fl{from{transform:translate(0,0);opacity:.2}to{transform:translate(30px,-50px);opacity:.9}}
+canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:60;width:100%;height:100%}
+section{position:relative;z-index:2;min-height:100vh;min-height:100svh;padding:64px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#s1{background:radial-gradient(ellipse at 70% 10%,#4a3170 0,transparent 55%),linear-gradient(#1b1230,#3a2757)}
+#s2{background:linear-gradient(#3a2757,#2d2048)}
+#s3{background:linear-gradient(#2d2048,#33265a)}
+#s4{background:linear-gradient(#33265a,#f3e6fa 40%);color:var(--dark)}
+#s5{background:linear-gradient(#f3e6fa,#ead9f6);color:var(--dark)}
+#s6{background:linear-gradient(#ead9f6,#3a2757 80%)}
+h1,h2{font-weight:400;margin:.3em 0;line-height:1.15}
+h1{font-size:2.5rem;color:var(--ros);text-shadow:0 0 20px rgba(200,162,232,.7)}
+h2{font-size:1.7rem}
+p{margin:.6em 0}
+.sub{color:var(--lil);font-size:1.1rem}
+.btn{margin-top:20px;min-height:52px;padding:0 30px;border:0;border-radius:30px;font:inherit;font-size:1.05rem;color:var(--dark);background:linear-gradient(135deg,var(--ros),var(--lav));box-shadow:0 0 18px rgba(200,162,232,.7);cursor:pointer;position:relative;overflow:hidden;animation:glow 2.5s infinite}
+.btn:active{transform:scale(.96)}
+@keyframes glow{50%{box-shadow:0 0 30px 6px rgba(245,207,229,.9)}}
+.wolf{width:min(62vw,260px);height:auto;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(200,162,232,.6))}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.moon{position:absolute;top:calc(40px + env(safe-area-inset-top,0px));right:24px;font-size:2.6rem;filter:drop-shadow(0 0 12px var(--gold))}
+.bal{position:absolute;font-size:2.2rem;animation:bob 5s ease-in-out infinite}
+.card{width:100%;max-width:340px;margin-top:18px;padding:22px;border-radius:20px;text-align:left;background:linear-gradient(135deg,rgba(255,249,255,.14),rgba(200,162,232,.18));border:1px solid rgba(233,207,145,.6);position:relative;overflow:hidden;touch-action:manipulation}
+.card:after{content:'';position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .8s}
+.card:hover:after,.card.sh:after{left:130%}
+.card h3{margin:0 0 10px;color:var(--gold);font-size:1rem;letter-spacing:.12em;text-align:center}
+.card li{list-style:none;margin:6px 0;font-size:.95rem}
+.card b{color:var(--ros)}
+.hat{width:90px;display:block;margin:0 auto 6px}
+#garden{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:340px;margin-top:10px}
+.g{aspect-ratio:1;min-height:56px;border:0;background:rgba(255,255,255,.07);border-radius:50%;font-size:2rem;cursor:pointer;animation:bob 4s ease-in-out infinite;transition:.3s}
+.g.on{background:rgba(233,207,145,.25);box-shadow:0 0 14px var(--gold);opacity:.75}
+.g:active{transform:scale(1.3)}
+#msg{min-height:110px;width:100%;max-width:340px;margin-top:14px;padding:18px;border-radius:18px;background:var(--perl);color:var(--dark);box-shadow:0 0 22px rgba(245,207,229,.5);display:flex;align-items:center;justify-content:center;font-size:1.05rem;opacity:.0;transform:translateY(12px) scale(.95);transition:.4s}
+#msg.show{opacity:1;transform:none}
+#cnt{color:var(--lil);font-size:.9rem;margin-top:10px}
+.paper{width:100%;max-width:360px;margin-top:18px;padding:28px 22px;background:#fffdf7 repeating-linear-gradient(transparent 0 27px,rgba(200,162,232,.25) 27px 28px);border:2px solid var(--lav);border-radius:6px;outline:6px solid var(--ros);outline-offset:-12px;box-shadow:0 8px 28px rgba(38,27,58,.25);text-align:left;color:var(--dark);font-size:1.03rem}
+.paper .fl{text-align:center;font-size:1.3rem}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s,transform .9s}
+.rv.in{opacity:1;transform:none}
+.sig{text-align:right;font-style:italic;margin-top:14px}
+#env{position:relative;width:min(82vw,300px);height:200px;margin:50px 0 20px;cursor:pointer;border:0;background:none;padding:0;-webkit-tap-highlight-color:transparent}
+#env .body{position:absolute;inset:0;background:linear-gradient(135deg,var(--lav),#b48ad8);border-radius:8px;z-index:3;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+#env .body:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49.5%,rgba(255,255,255,.18) 50%) left/50% 100% no-repeat,linear-gradient(to bottom left,transparent 49.5%,rgba(255,255,255,.18) 50%) right/50% 100% no-repeat}
+#env .flap{position:absolute;top:0;left:0;width:100%;height:105px;background:#d8b8f0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s,z-index 0s .4s;z-index:4}
+#env.open .flap{transform:rotateX(180deg);z-index:1}
+#env .seal{position:absolute;left:50%;top:84px;margin-left:-22px;width:44px;height:44px;border-radius:50%;background:#d9577f;color:#fff;font-size:1.3rem;line-height:44px;z-index:5;box-shadow:0 0 10px rgba(0,0,0,.4);animation:beat 1.2s infinite;transition:opacity .4s}
+@keyframes beat{50%{transform:scale(1.18)}}
+#env.open .seal{animation:none;opacity:0}
+#env .ltr{position:absolute;left:8%;width:84%;height:170px;top:20px;background:#fffdf7;border-radius:4px;z-index:2;transition:transform 1.2s .6s;display:flex;align-items:center;justify-content:center;color:var(--dark);font-size:2rem}
+#env.open .ltr{transform:translateY(-150px)}
+#fin{max-width:340px;opacity:0;max-height:0;overflow:hidden;transition:opacity 1s,max-height 1.5s;background:var(--perl);color:var(--dark);border-radius:18px;padding:0 20px;text-align:left}
+#fin.show{opacity:1;max-height:700px;padding:22px 20px}
+.hrt{position:fixed;font-size:20px;pointer-events:none;z-index:61;animation:up 2s forwards}
+@keyframes up{to{transform:translateY(-140px);opacity:0}}
+footer{position:relative;z-index:2;text-align:center;padding:26px 20px 40px;background:#3a2757;color:var(--lil)}
+#mus,#top{position:fixed;z-index:55;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,249,255,.9);color:var(--dark);font-size:1.3rem;box-shadow:0 0 14px var(--lav);cursor:pointer}
+#mus{top:calc(14px + env(safe-area-inset-top,0px));left:14px}
+#mus.on{animation:glow 1.5s infinite}
+#top{bottom:calc(16px + env(safe-area-inset-bottom,0px));right:14px;opacity:0;pointer-events:none;transition:.3s;font-size:1.1rem}
+#top.v{opacity:.9;pointer-events:auto}
+nav{position:fixed;right:6px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column}
+nav a{display:block;width:26px;height:26px;position:relative}
+nav a:after{content:'';position:absolute;top:9px;left:9px;width:8px;height:8px;border-radius:50%;background:var(--lav);opacity:.6}
+nav a.cur:after{background:var(--gold);opacity:1;box-shadow:0 0 8px var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}html{scroll-behavior:auto}#fx{display:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="fx" aria-hidden="true"></div>
+<canvas id="cf" aria-hidden="true"></canvas>
+<button id="mus" aria-label="Activar música" title="Música">♪</button>
+<button id="top" aria-label="Volver al inicio">↑</button>
+<nav aria-label="Secciones"><a href="#s1" aria-label="Portada"></a><a href="#s2" aria-label="Expediente"></a><a href="#s3" aria-label="Jardín"></a><a href="#s4" aria-label="Felicitación"></a><a href="#s5" aria-label="Carta"></a><a href="#s6" aria-label="Sobre"></a></nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="wolf" viewBox="0 0 200 190">
+<path d="M30 80 L38 12 L82 50Z" fill="#9a7ab8"/><path d="M170 80 L162 12 L118 50Z" fill="#9a7ab8"/>
+<path d="M42 62 L45 28 L68 50Z" fill="#F5CFE5"/><path d="M158 62 L155 28 L132 50Z" fill="#F5CFE5"/>
+<ellipse cx="100" cy="105" rx="75" ry="65" fill="#d9c3ee"/>
+<path d="M100 50 Q85 80 100 92 Q115 80 100 50Z" fill="#fff9ff" opacity=".6"/>
+<ellipse cx="100" cy="128" rx="38" ry="26" fill="#fff9ff"/>
+<ellipse cx="70" cy="108" rx="9" ry="12" fill="#261B3A"/><ellipse cx="130" cy="108" rx="9" ry="12" fill="#261B3A"/>
+<circle cx="73" cy="103" r="3.5" fill="#fff"/><circle cx="133" cy="103" r="3.5" fill="#fff"/>
+<ellipse cx="52" cy="125" rx="11" ry="7" fill="#F5A6CB" opacity=".7"/><ellipse cx="148" cy="125" rx="11" ry="7" fill="#F5A6CB" opacity=".7"/>
+<path d="M92 120 Q100 114 108 120 Q100 130 92 120Z" fill="#261B3A"/>
+<path d="M100 128 Q100 138 90 138 M100 128 Q100 138 110 138" stroke="#261B3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<path d="M30 150 q12 12 24 0 M146 150 q12 12 24 0" stroke="#c8a2e8" stroke-width="0" fill="none"/>
+</symbol>
+</defs>
+</svg>
+
+<section id="s1">
+<div class="moon">🌙</div>
+<div class="bal" style="left:8%;top:22%">🎈</div><div class="bal" style="right:8%;top:30%;animation-delay:-2s">🎈</div>
+<svg class="wolf" viewBox="0 0 200 190" role="img" aria-label="Ilustración de una lobita"><use href="#wolf"/></svg>
+<h1>¡Feliz cumpleaños, Hary!</h1>
+<p class="sub">Hoy es el día de lobita. 🐺</p>
+<p>Una celebración especial para una personita especial.</p>
+<button class="btn" id="start">¡Comenzar celebración! ♡</button>
+</section>
+
+<section id="s2">
+<h2 class="rv">¡Atención, atención! Tenemos una cumpleañera</h2>
+<p class="sub rv">El día de hoy todas las felicitaciones están reservadas para Hary.</p>
+<div class="card rv" id="exp" tabindex="0">
+<svg class="hat" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 4 L82 70 H18Z" fill="#F5CFE5" stroke="#E9CF91" stroke-width="3"/><path d="M32 40 L68 40 M26 55 L74 55" stroke="#C8A2E8" stroke-width="5"/><circle cx="50" cy="6" r="6" fill="#E9CF91"/></svg>
+<h3>FELIZ CUMPLEAÑOS</h3>
+<ul style="padding:0;margin:0">
+<li><b>Nombre:</b> Hary</li>
+<li><b>Apodo:</b> Lobita</li>
+<li><b>Estado actual:</b> Cumpliendo año</li>
+<li><b>Edad:</b> 19 años</li>
+</ul>
+</div>
+</section>
+
+<section id="s3">
+<h2 class="rv">Mensajitos y ocurrencias</h2>
+<p class="sub rv">Toque las flores y las estrellas para descubrir qué dicen.</p>
+<div id="garden"></div>
+<div id="msg" role="status" aria-live="polite"></div>
+<div id="cnt">Descubiertos: 0 de 11</div>
+</section>
+
+<section id="s4">
+<h2 class="rv">Unas felicitaciones muy especiales</h2>
+<div class="paper rv" style="background:#fffdf7;outline-color:var(--lil)">
+<div class="fl">🌸 ✨ 🎂 ✨ 🌸</div>
+<p><b>¡Feliz cumpleaños, Hary!</b></p>
+<p>Espero que hoy tenga un día maravilloso, lleno de sonrisas, abrazos, regalos y momentos bonitos.</p>
+<p>Que disfrute muchísimo, que la consientan, que coma algo delicioso y que no le falten motivos para celebrar.</p>
+<p>Le deseo mucha salud, felicidad, éxitos y nuevas experiencias. Que este año venga acompañado de oportunidades, aprendizajes, aventuras y muchos sueños cumplidos.</p>
+<p>¡Que pase un cumpleaños increíble, lobita! 💜</p>
+</div>
+</section>
+
+<section id="s5">
+<h2 class="rv">Y bueno... algo que quería decirle</h2>
+<div class="paper">
+<p class="rv">Bueno, Haryyyy, ¡feliz cumpleaños! JAJAJA. 🐺💗</p>
+<p class="rv">Espero que hoy tenga un día increíble, que la consientan muchísimo, que coma algo rico, que reciba regalitos y que se divierta un montón.</p>
+<p class="rv">Quería hacerle algo diferente para esta ocasión, así que aquí tiene esta pequeña página que preparé especialmente para usted. Espero que le guste, porque me tomé el tiempo de hacerla y, siendo sinceros, una lobita como usted no podía quedarse sin su propia celebración JAJAJA.</p>
+<p class="rv">Fuera de bromas, me alegra mucho haberla conocido. Gracias por las conversaciones, las risas y todas esas ocurrencias suyas que hacen que nunca falte algo de qué reírse.</p>
+<p class="rv">Le deseo muchísimos éxitos, experiencias bonitas, nuevos logros y un año lleno de momentos que la hagan feliz.</p>
+<p class="rv">¡Disfrute muchísimo su cumpleaños, lobita!</p>
+<p class="sig rv">Con cariño, chino. ♡</p>
+</div>
+</section>
+
+<section id="s6">
+<h2 class="rv">¡Espere! Todavía hay algo más</h2>
+<p class="sub rv">Parece que alguien dejó un último regalito por aquí...</p>
+<button id="env" aria-label="Abrir el sobre"><div class="ltr">💌</div><div class="body"></div><div class="flap"></div><div class="seal">♥</div></button>
+<div id="fin">
+<p>Y bueno, lobita, hasta aquí llega esta pequeña sorpresa.</p>
+<p>Espero que le haya gustado este detallito y que haya podido sacarle al menos una sonrisa.</p>
+<p>¡Feliz cumpleaños, Hary! Que disfrute muchísimo su día.</p>
+<p class="sig">Atentamente: chino. ♡</p>
+</div>
+<button class="btn" id="again" style="display:none">Volver a celebrar 🎂</button>
+</section>
+
+<footer>Hecho con mucho cariño para lobita. 🐺♡</footer>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ambiente */
+var fx=$('#fx'),i,e;
+for(i=0;i<28;i++){e=document.createElement('i');e.className='st';e.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s';fx.appendChild(e)}
+var pet=['🌸','🪻','💜','🦋'];
+for(i=0;i<8;i++){e=document.createElement('span');e.className='pt';e.textContent=pet[i%4];e.style.cssText='left:'+Math.random()*100+'%;animation-duration:'+(14+Math.random()*10)+'s;animation-delay:'+(-Math.random()*20)+'s';fx.appendChild(e)}
+for(i=0;i<9;i++){e=document.createElement('i');e.className='ff';e.style.cssText='left:'+Math.random()*100+'%;top:'+(30+Math.random()*65)+'%;animation-duration:'+(3+Math.random()*3)+'s;animation-delay:'+Math.random()*3+'s';fx.appendChild(e)}
+/* confeti */
+var cv=$('#cf'),cx=cv.getContext('2d'),ps=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+var cols=['#C8A2E8','#F5CFE5','#E9CF91','#E6D5F5','#FFF9FF'];
+function confetti(n){if(calm){n=Math.min(n,15)}
+for(var k=0;k<n;k++)ps.push({x:innerWidth/2,y:innerHeight*.55,vx:(Math.random()-.5)*12,vy:-Math.random()*13-3,r:Math.random()*6+3,c:cols[k%5],a:Math.random()*6,l:1});
+if(!run){run=true;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);
+ps=ps.filter(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.3;p.vx*=.99;p.a+=.2;p.l-=.009;
+cx.globalAlpha=Math.max(p.l,0);cx.fillStyle=p.c;cx.fillRect(p.x,p.y,p.r,p.r*Math.abs(Math.cos(p.a))+1);return p.l>0&&p.y<cv.height+20});
+if(ps.length){requestAnimationFrame(tick)}else{run=false;cx.clearRect(0,0,cv.width,cv.height)}}
+function hearts(el,n){var r=el.getBoundingClientRect();for(var k=0;k<n;k++){var h=document.createElement('span');h.className='hrt';h.textContent=['💜','💗','✨','🌸'][k%4];h.style.left=(r.left+Math.random()*r.width)+'px';h.style.top=(r.top+r.height/2)+'px';document.body.appendChild(h);setTimeout(function(x){x.remove()},2100,h)}}
+/* revelado, progreso, nav */
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){var d=$$('.rv').indexOf(x.target);var sib=x.target.parentNode.querySelectorAll('.rv');var idx=Array.prototype.indexOf.call(sib,x.target);setTimeout(function(){x.target.classList.add('in')},calm?0:idx*350);io.unobserve(x.target)}})},{threshold:.25});
+$$('.rv').forEach(function(x){io.observe(x)});
+var secs=$$('section'),links=$$('nav a'),bar=$('#bar'),top=$('#top');
+function sc(){var h=document.documentElement,m=h.scrollHeight-innerHeight;bar.style.width=(m>0?scrollY/m*100:0)+'%';top.classList.toggle('v',scrollY>innerHeight*.6);
+var c=0;secs.forEach(function(s,k){if(s.getBoundingClientRect().top<innerHeight*.5)c=k});links.forEach(function(a,k){a.classList.toggle('cur',k===c)})}
+addEventListener('scroll',sc,{passive:true});sc();
+top.onclick=function(){scrollTo({top:0})};
+$('#start').onclick=function(){confetti(120);$('#s2').scrollIntoView({behavior:calm?'auto':'smooth'})};
+var ex=$('#exp');ex.addEventListener('touchstart',function(){ex.classList.add('sh');setTimeout(function(){ex.classList.remove('sh')},900)},{passive:true});
+/* jardín */
+var M=['La cumpleañera tiene autorización oficial para exigir pastel durante todo el día.','Hoy las reglas las pone Hary. Mañana veremos.','Advertencia: esta página contiene cantidades peligrosas de ternura.','Su misión de hoy: recibir felicitaciones y no rechazar ningún regalito.','La administración confirma que usted es la protagonista de hoy.','Se recomienda suministrar pastel a la lobita cada cierto tiempo.','Espero que hoy le sobren motivos para reír y momentos dignos de recordar.','Qué bonito tener una fecha más para celebrar su existencia.','Que este nuevo capítulo venga cargado de aventuras, sorpresas y alegrías.','Hoy merece una celebración tan especial como usted.','Ojalá disfrute muchísimo cada pequeño detalle de este día.'];
+var ic=['🌸','⭐','🪻','✨','🌷','🦋','🌸','⭐','🪻','✨','🌷'],order=[2,0,4,1,6,3,5,8,7,10,9],found=0,g=$('#garden'),msg=$('#msg');
+order.forEach(function(mi,k){var b=document.createElement('button');b.className='g';b.textContent=ic[k];b.setAttribute('aria-label','Descubrir mensaje '+(k+1));b.style.animationDelay=(-k*.5)+'s';
+b.onclick=function(){if(!b.classList.contains('on')){b.classList.add('on');found++;$('#cnt').textContent='Descubiertos: '+found+' de 11';if(found===11){confetti(80)}}
+msg.classList.remove('show');void msg.offsetWidth;msg.textContent=M[mi];msg.classList.add('show');hearts(b,3)};g.appendChild(b)});
+/* sobre */
+var env=$('#env'),opened=false;
+env.onclick=function(){if(opened)return;opened=true;env.classList.add('open');env.setAttribute('aria-label','Sobre abierto');
+hearts(env,8);setTimeout(function(){confetti(60);hearts(env,8)},900);
+setTimeout(function(){$('#fin').classList.add('show');$('#again').style.display='inline-block'},1800);
+setTimeout(function(){$('#again').scrollIntoView({behavior:calm?'auto':'smooth',block:'end'})},2600)};
+$('#again').onclick=function(){confetti(120);opened=false;env.classList.remove('open');$('#fin').classList.remove('show');$('#again').style.display='none';setTimeout(function(){scrollTo({top:0,behavior:calm?'auto':'smooth'})},500)};
+/* música (sintetizada, sin archivos externos) */
+var ac=null,tm=null,on=false,mb=$('#mus'),notes=[392,494,587,659,587,494,440,523,659,784,659,523],ni=0;
+function note(){var t=ac.currentTime,o=ac.createOscillator(),gn=ac.createGain();o.type='triangle';o.frequency.value=notes[ni%notes.length]*(ni%24>=12?.75:1);ni++;
+gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(.05,t+.05);gn.gain.exponentialRampToValueAtTime(.0001,t+1.2);o.connect(gn);gn.connect(ac.destination);o.start(t);o.stop(t+1.3)}
+mb.onclick=function(){try{if(!on){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!ac)ac=new AC();if(ac.resume)ac.resume();note();tm=setInterval(note,550);on=true;mb.classList.add('on');mb.textContent='❚❚';mb.setAttribute('aria-label','Pausar música')}
+else{clearInterval(tm);on=false;mb.classList.remove('on');mb.textContent='♪';mb.setAttribute('aria-label','Activar música')}}catch(err){}};
+})();
+</script>
+</body>
+</html>
